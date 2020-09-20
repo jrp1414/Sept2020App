@@ -1,0 +1,15 @@
+.ratingMoreThan3{
+background-color: chartreuse;
+}
+
+.ratingLessThanOrEqualTo3{
+ background-color: crimson;   
+}
+
+.bolder{
+    font-weight: bold;
+}
+
+h3{
+    background-color: cyan;
+}
