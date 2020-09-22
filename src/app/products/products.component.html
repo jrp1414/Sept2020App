@@ -1,91 +1,20 @@
 <h3>Products List</h3>
-<h3>Sample h3</h3>
-<table *ngIf="products.length>0 else noproducts" class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Sl No</th>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Release Date</th>
-            <th>Desc</th>
-            <th>Email Id</th>
-            <th>Price</th>
-            <th>Rating</th>
-            <th>Image</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- <tr [style.backgroundColor]="product.starRating>3?'green':'red'" 
-            [style.fontWeight]="product.starRating>3?'bold':''" *ngFor="let product of products; let i=index" > -->
-        <!-- <tr [class.ratingMoreThan3]="product.starRating>3"
-                [class.ratingLessThanOrEqualTo3]="product.starRating<=3"
-                *ngFor="let product of products; let i=index" > -->
-        <!-- <tr [ngStyle]="{'background-color': (product.starRating>3?'green':'red'),fontWeight:(product.starRating>3?'bold':'')}"
-                    *ngFor="let product of products; let i=index" >     -->
-        <tr [ngClass]="GetClass(product)"
-            *ngFor="let product of products; let i=index">
-            <td scope="row">{{i+1}}</td>
-            <td>{{product.productName}}</td>
-            <td>{{product.productCode}}</td>
-            <td>{{product.releaseDate}}</td>
-            <td>{{product.description?.descText}}</td>
-            <td>{{product.description?.emailId}}</td>
-            <td>{{product.price}}</td>
-            <td [ngSwitch]="product.starRating">
-                <span *ngSwitchCase="1">Very Bad</span>
-                <span *ngSwitchCase="2">Bad</span>
-                <span *ngSwitchCase="3">Average</span>
-                <span *ngSwitchCase="4">Good</span>
-                <span *ngSwitchCase="5">Very Good</span>
-                <span *ngSwitchDefault>NA</span>
-            </td>
-            <td><img [src]="product.imageUrl" [alt]="product.productName" width="100px" height="100px"></td>
-            <td><button type="button" (click)="IdTest(product.productId)" class="btn btn-primary">Click Me</button></td>
-        </tr>
-    </tbody>
-</table>
+<button type="button" class="btn btn-primary" (click)="IdTest()">Test</button>
+<!-- *ngIf="products.length>0 else noproducts" -->
 
-<!-- <ng-template [ngIf]="products.length>0">
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Sl No</th>
-                <th>Name</th>
-                <th>Code</th>
-                <th>Release Date</th>
-                <th>Desc</th>
-                <th>Email Id</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th>Image</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let product of products; let i=index" >
-                <td scope="row">{{i+1}}</td>
-                <td>{{product.productName}}</td>
-                <td>{{product.productCode}}</td>
-                <td>{{product.releaseDate}}</td>
-                <td>{{product.description?.descText}}</td>
-                <td>{{product.description?.emailId}}</td>
-                <td>{{product.price}}</td>
-                <td [ngSwitch]="product.starRating">
-                    <span *ngSwitchCase="1">Very Bad</span>
-                    <span *ngSwitchCase="2">Bad</span>
-                    <span *ngSwitchCase="3">Average</span>
-                    <span *ngSwitchCase="4">Good</span>
-                    <span *ngSwitchCase="5">Very Good</span>
-                    <span *ngSwitchDefault>NA</span>
-                </td>
-                <td><img [src]="product.imageUrl" [alt]="product.productName" width="100px" height="100px"></td>
-                <td><button type="button" (click)="IdTest(product.productId)" class="btn btn-primary">Click Me</button></td>
-            </tr>       
-        </tbody>
-    </table>
-</ng-template> -->
-
-<ng-template #noproducts>
+<!-- <ng-template #noproducts>
     <div class="alert alert-info" role="alert">
         <strong>No Products Available</strong>
     </div>
-</ng-template>
+</ng-template> -->
+
+<div class="alert alert-success" *ngIf="childData.length>0" role="alert">
+    <strong>Hello {{childData}}</strong>
+</div>
+
+<div class="row">
+    <div style="margin-bottom: 10px;" *ngFor="let prod of products; let i=index" class="col-md-4">
+        <!-- <product-thumbnail [product]="prod" (parentData)="ChildDataReceived($event)" ></product-thumbnail> -->
+        <product-thumbnail [productDetails]="prod" (pd)="ChildDataReceived($event)" ></product-thumbnail>
+    </div>
+</div>

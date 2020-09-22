@@ -8,10 +8,30 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ProductsComponent {
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
-  IdTest(prodId){
-    alert(prodId);  
+  IdTest(){
+    // for (let index = 0; index < this.products.length; index++) {
+    //   console.log(this.products[index]);      
+    // }
+
+    // function(value){
+    //   console.log(value);
+    // }
+    //()=>{}
+    // this.products.forEach((value)=>{
+    //   console.log(value);
+    // });
+
+    // for (var index in this.products) {
+    //   console.log(this.products[index]);
+    // }
+
+    for (var product of this.products) {
+      console.log(product);
+    }
   }
 
   GetClass(product){
@@ -20,6 +40,10 @@ export class ProductsComponent {
       return ["ratingMoreThan3","bolder"];
     }
     return "ratingLessThanOrEqualTo3";
+  }
+  childData:string="";
+  ChildDataReceived(data){
+    this.childData = data;
   }
   //products:any[] = [];
   products:any[] = [
@@ -41,7 +65,7 @@ export class ProductsComponent {
       "productName": "Garden Cart",
       "productCode": "GDN-0023",
       "releaseDate": new Date(2017, 9, 20),
-      //"description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
+      "description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
       "price": 32.99985,
       "starRating": 2,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
