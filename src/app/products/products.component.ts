@@ -7,7 +7,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation:ViewEncapsulation.None
 })
 export class ProductsComponent {
-
+  filterText:string="";
   constructor() { 
     
   }
@@ -45,6 +45,23 @@ export class ProductsComponent {
   ChildDataReceived(data){
     this.childData = data;
   }
+
+  UpdateProductsList(){
+    this.products.push({
+      "productId": 1,
+      "productName": "Leaf Rake",
+      "productCode": "GDN-0011",
+      "releaseDate": new Date(2016, 10, 25),
+      "description": {
+        "descText": "Leaf rake with 48-inch wooden handle.",
+        "emailId": "test@test.com"
+      },
+      "price": 19.95,
+      "starRating": 1,
+      "currentAvailibility":true,
+      "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+    });
+  }
   //products:any[] = [];
   products:any[] = [
     {
@@ -58,6 +75,7 @@ export class ProductsComponent {
       },
       "price": 19.95,
       "starRating": 1,
+      "currentAvailibility":true,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
     },
     {
@@ -68,6 +86,7 @@ export class ProductsComponent {
       "description": { "descText": "15 gallon capacity rolling garden cart", "emailId": "test@test.com" },
       "price": 32.99985,
       "starRating": 2,
+      "currentAvailibility":false,
       "imageUrl": "https://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
     },
     {

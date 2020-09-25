@@ -1,14 +1,21 @@
-<div class="card">
+<div class="card" >
     <div class="card-header">
         {{product?.productCode}}
     </div>
     <div class="card-body">
-        <h4 class="card-title">{{product?.productName}}</h4>
-        <p class="card-text">{{product?.description?.descText}}</p>
-        <img [src]="product?.imageUrl" width="50px" height="50px">        
+        <!-- <h4 class="card-title">{{product?.productName?product?.productName:'NA'}}</h4> -->
+        <!-- <h4 class="card-title">{{product?.productName | lowercase | uppercase  }}</h4> -->
+        <h4 class="card-title" >{{product?.productName | uppercase }}</h4>
+        <p class="card-text">{{product?.description?.descText | lowercase | shorten}}</p>
+        <p class="card-text">{{product?.price | currency :'INR': true:'1.2-2' }}</p>
+        <img [src]="product?.imageUrl" width="50px" height="50px">
     </div>
     <div class="card-footer text-muted">
         {{product?.description?.emailId}}
         <button type="button" class="btn btn-primary" (click)="SendToParent()">Send To Parent</button>
     </div>
 </div>
+<!-- 
+<div>
+    {{product | json}}
+</div> -->

@@ -1,5 +1,5 @@
 <h3>Products List</h3>
-<button type="button" class="btn btn-primary" (click)="IdTest()">Test</button>
+<!-- <button type="button" class="btn btn-primary" (click)="IdTest()">Test</button> -->
 <!-- *ngIf="products.length>0 else noproducts" -->
 
 <!-- <ng-template #noproducts>
@@ -7,14 +7,29 @@
         <strong>No Products Available</strong>
     </div>
 </ng-template> -->
-
+<!-- 
 <div class="alert alert-success" *ngIf="childData.length>0" role="alert">
     <strong>Hello {{childData}}</strong>
-</div>
-
+</div> -->
 <div class="row">
-    <div style="margin-bottom: 10px;" *ngFor="let prod of products; let i=index" class="col-md-4">
-        <!-- <product-thumbnail [product]="prod" (parentData)="ChildDataReceived($event)" ></product-thumbnail> -->
-        <product-thumbnail [productDetails]="prod" (pd)="ChildDataReceived($event)" ></product-thumbnail>
+    <div style="margin-left: 20px;" class="col-md-2">
+        Filter Product :
     </div>
+    <div class="col-md-2">
+        <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="filterText" placeholder="Filter Product">
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button type="button" (click)="UpdateProductsList()" class="btn btn-primary">Pipe Test</button>
+    </div>
+</div>
+<div class="row">
+    <!-- <div style="margin-bottom: 10px;" *ngFor="let prod of products; let i=index" class="col-md-4">
+        <product-thumbnail [product]="prod" (parentData)="ChildDataReceived($event)" ></product-thumbnail> 
+        <product-thumbnail [productDetails]="prod" (pd)="ChildDataReceived($event)" ></product-thumbnail>
+    </div> -->
+
+    <product-thumbnail *ngFor="let prod of products | filter : filterText: 'productCode'" class="col-md-4" [productDetails]="prod"
+        (pd)="ChildDataReceived($event)"></product-thumbnail>
 </div>
