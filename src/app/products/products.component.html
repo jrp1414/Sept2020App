@@ -30,6 +30,6 @@
         <product-thumbnail [productDetails]="prod" (pd)="ChildDataReceived($event)" ></product-thumbnail>
     </div> -->
 
-    <product-thumbnail *ngFor="let prod of products | filter : filterText: 'productCode'" class="col-md-4" [productDetails]="prod"
+    <product-thumbnail *ngFor="let prod of products | filter : filterText: 'productName':'productCode'" class="col-md-4" [productDetails]="prod"
         (pd)="ChildDataReceived($event)"></product-thumbnail>
 </div>

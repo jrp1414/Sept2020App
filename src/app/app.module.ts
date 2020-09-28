@@ -25,7 +25,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     FilterPipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, //CommonModule
     FormsModule
   ],
   providers: [],

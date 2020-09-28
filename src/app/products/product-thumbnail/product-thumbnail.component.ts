@@ -11,14 +11,22 @@ export class ProductThumbnailComponent implements OnInit {
   }
 
   @Input('productDetails') product:any;
-  @Output('pd') parentData:EventEmitter<string> = new EventEmitter<string>();
+  @Output('pd') parentData:EventEmitter<Person> = new EventEmitter<Person>();
 
   ngOnInit(): void {
   }
 
   SendToParent(){
-    let name = prompt("Enter Name");
-    this.parentData.emit(name);
+    var person = new Person();
+    person.name = prompt("Enter Name");
+    person.age = parseInt(prompt("Enter Age"));
+    this.parentData.emit(person);
   }
   
+}
+
+
+export class Person {
+ name:string;
+ age:number;
 }

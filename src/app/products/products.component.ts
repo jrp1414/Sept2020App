@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Person } from './product-thumbnail/product-thumbnail.component';
 
 @Component({
   selector: 'app-products',
@@ -41,9 +42,10 @@ export class ProductsComponent {
     }
     return "ratingLessThanOrEqualTo3";
   }
-  childData:string="";
+  childData:Person;
   ChildDataReceived(data){
     this.childData = data;
+    console.log(this.childData);    
   }
 
   UpdateProductsList(){
