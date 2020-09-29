@@ -1,4 +1,7 @@
-<h3>Products List</h3>
+<!-- <h3 basic-highlight>Products List</h3> -->
+<!-- <h3 better-highlight [bgColor]="'chartreuse'">Products List</h3> -->
+<!-- <h3 better-highlight bgColor="maroon">Products List</h3> -->
+<h3 [better-highlight]="'chartreuse'" highlight="maroon" >Products List</h3>
 <!-- <button type="button" class="btn btn-primary" (click)="IdTest()">Test</button> -->
 <!-- *ngIf="products.length>0 else noproducts" -->
 
@@ -21,7 +24,9 @@
         </div>
     </div>
     <div class="col-md-2">
-        <button type="button" (click)="UpdateProductsList()" class="btn btn-primary">Pipe Test</button>
+        <!-- <button type="button" (click)="UpdateProductsList()" class="btn btn-primary">Pipe Test</button> -->
+        <span *unless="filterText.length==0" class="alert alert-info">{{filterText}}</span>
+        <!-- <span *ngIf="filterText.length>0" class="alert alert-info">{{filterText}}</span> -->
     </div>
 </div>
 <div class="row">
