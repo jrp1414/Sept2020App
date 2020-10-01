@@ -10,4 +10,5 @@ export * from "./products/product-thumbnail/product-thumbnail.component";
 export * from "./property-binding/property-binding.component";
 export * from "./twoway-binding/twoway-binding.component";
 export * from "./directives/unless.directive";
-
+export * from "./Services/logger.service";
+export * from "./Services/product.service";

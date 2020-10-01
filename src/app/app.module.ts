@@ -5,7 +5,7 @@ import {
   AppComponent, StringInterpolationComponent,
   PropertyBindingComponent, EventBindingComponent, TwowayBindingComponent,
   ProductsComponent,ProductThumbnailComponent, ShortenPipe, FilterPipe, 
-  BasicHighlightDirective, BetterHighlightDirective,UnlessDirective
+  BasicHighlightDirective, BetterHighlightDirective,UnlessDirective, LoggerService, ProductService
 } from "./application.index";
 
 @NgModule({
@@ -27,7 +27,10 @@ import {
     BrowserModule, //CommonModule
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LoggerService
+    //ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { TemplateParseResult } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { LoggerService } from './application.index';
 
 @Component({
   // selector: 'app-main',
