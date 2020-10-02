@@ -12,3 +12,6 @@ export * from "./twoway-binding/twoway-binding.component";
 export * from "./directives/unless.directive";
 export * from "./Services/logger.service";
 export * from "./Services/product.service";
+export { DashboardComponent } from './dashboard/dashboard.component';
+export { HeaderComponent } from './header/header.component';
+export { FooterComponent } from './footer/footer.component';
