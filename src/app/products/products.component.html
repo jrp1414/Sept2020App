@@ -30,7 +30,7 @@
     </div>
     <div class="col-md-2">
         <!-- <button type="button" (click)="AddProduct()" class="btn btn-primary">Add Product</button>         -->
-        <button type="button" [routerLink]="'/home'" class="btn btn-primary">Load Home</button>
+        <button type="button" [routerLink]="'home'" class="btn btn-primary">Load Home</button>
     </div>
 </div>
 <div class="row">
@@ -39,6 +39,6 @@
         <product-thumbnail [productDetails]="prod" (pd)="ChildDataReceived($event)" ></product-thumbnail>
     </div> -->
 
-    <product-thumbnail *ngFor="let prod of products | filter : filterText: 'productName':'productCode':'productId'" class="col-md-4" [productDetails]="prod"
+    <product-thumbnail [routerLink]="['/productDetails',prod.productId]" *ngFor="let prod of products | filter : filterText: 'productName':'productCode':'productId'" class="col-md-4" [productDetails]="prod"
         (pd)="ChildDataReceived($event)"></product-thumbnail>
 </div>

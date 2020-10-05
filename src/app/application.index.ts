@@ -15,3 +15,5 @@ export * from "./Services/product.service";
 export { DashboardComponent } from './dashboard/dashboard.component';
 export { HeaderComponent } from './header/header.component';
 export { FooterComponent } from './footer/footer.component';
+export * from "./products/product-details/product-details.component";
+export * from "./students/students.component";
