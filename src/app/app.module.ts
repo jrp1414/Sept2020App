@@ -7,16 +7,22 @@ import {
   ProductsComponent,ProductThumbnailComponent, ShortenPipe, FilterPipe, 
   BasicHighlightDirective, BetterHighlightDirective,UnlessDirective, LoggerService, 
   ProductService,DashboardComponent,HeaderComponent,FooterComponent,
-  StudentsComponent,ProductDetailsComponent
+  StudentsComponent,ProductDetailsComponent,StudentDetailsComponent,StudentEditComponent
 } from "./application.index";
 import { Route, RouterModule, Routes } from '@angular/router';
+import { StudentsGuardService } from './students/Services/students-guard.service';
+import { TempProductsComponent } from './temp-products/temp-products.component';
+
 
 // const routes:Route[] = [];
 const routes:Routes = [
  {path:"home", component:DashboardComponent}, //localhost:4200/home - DashbpardComponent's template
  {path:"products",component:ProductsComponent}, //localhost:4200/products - ProductsComponent
  {path:"productDetails/:id",component:ProductDetailsComponent}, 
- {path:"students",component:StudentsComponent},
+ {path:"students",component:StudentsComponent, children:[
+   {path:":id",component:StudentDetailsComponent, canActivate:[StudentsGuardService]},
+   {path:":id/edit",component:StudentEditComponent}
+ ]},
  {path:"",redirectTo:"home",pathMatch:'full'}, //     /
  //{path:"**",redirectTo:"home"}
 ];
@@ -43,7 +49,10 @@ const routes:Routes = [
     HeaderComponent,
     FooterComponent,
     StudentsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    StudentDetailsComponent,
+    StudentEditComponent,
+    TempProductsComponent
   ],
   imports: [
     BrowserModule, //CommonModule

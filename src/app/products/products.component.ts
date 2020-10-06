@@ -10,12 +10,17 @@ import { Person } from './product-thumbnail/product-thumbnail.component';
   styleUrls:["./products.component.css"],
   // encapsulation:ViewEncapsulation.None,
   // providers:[{provide:LoggerService,useValue:'logger'}]
+  providers:[ProductService]
 })
 export class ProductsComponent {
   filterText:string="";
   products:Product[]= [];
   constructor(private logger:LoggerService,private productService:ProductService) { 
     this.products = this.productService.GetProductsList();
+  }
+
+  TestServiceHierarchy(){
+    this.productService.productEmitter.emit("Test Data Emitted from Products Component")
   }
 
   IdTest(){

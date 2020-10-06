@@ -1,10 +1,8 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { Product, products } from './products.data';
 
-@Injectable({
-  providedIn:"root"
-})
+@Injectable()
 export class ProductService {
   private productsList:Product[] = products;
   constructor(private logger: LoggerService) { }
@@ -22,4 +20,6 @@ export class ProductService {
   AddProduct(product:Product){
     products.push(product);
   }
+
+  productEmitter:EventEmitter<string> = new EventEmitter<string>();
 }

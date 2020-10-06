@@ -17,3 +17,8 @@ export { HeaderComponent } from './header/header.component';
 export { FooterComponent } from './footer/footer.component';
 export * from "./products/product-details/product-details.component";
 export * from "./students/students.component";
+export * from "./students/student-details/student-details.component";
+export * from "./students/student-edit/student-edit.component";
+export * from "./students/Services/student.service";
+export * from "./students/Services/students-guard.service";
+export * from "./students/Services/students.data";

@@ -4,9 +4,15 @@
             <div class="col-md-2">
                 <ul class="list-group">
                     <li class="list-group-item" *ngFor="let student of students">
-                        <a href="#">{{student.FirstName +" "+student.LastName}}</a>
+                        <a [routerLink]="student.StudentId">{{student.FirstName +" "+student.LastName}}</a>
+                    </li>
+                    <li class="list-group-item" >
+                        <a [routerLink]="'12'">Test loading 12</a>    
                     </li>
                 </ul>
+            </div>
+            <div class="col-md-10">
+                <router-outlet></router-outlet>
             </div>
         </div>
     </div>
