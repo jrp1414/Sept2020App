@@ -1,6 +1,6 @@
 import { TemplateParseResult } from '@angular/compiler';
 import { Component } from '@angular/core';
-import { LoggerService } from './application.index';
+import {ProductService } from './application.index';
 
 @Component({
   // selector: 'app-main',
@@ -21,7 +21,8 @@ import { LoggerService } from './application.index';
   // ]
   styleUrls:[
     './app.component.css'
-  ]
+  ],
+  providers:[ProductService]
 })
 export class AppComponent {
   

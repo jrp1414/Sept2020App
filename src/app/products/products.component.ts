@@ -10,7 +10,7 @@ import { Person } from './product-thumbnail/product-thumbnail.component';
   styleUrls:["./products.component.css"],
   // encapsulation:ViewEncapsulation.None,
   // providers:[{provide:LoggerService,useValue:'logger'}]
-  providers:[ProductService]
+  // providers:[ProductService]
 })
 export class ProductsComponent {
   filterText:string="";

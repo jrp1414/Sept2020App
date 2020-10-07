@@ -1,8 +1,9 @@
 import  { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import {AppComponent} from "./app.component";
 import {
-  AppComponent, StringInterpolationComponent,
+  StringInterpolationComponent,
   PropertyBindingComponent, EventBindingComponent, TwowayBindingComponent,
   ProductsComponent,ProductThumbnailComponent, ShortenPipe, FilterPipe, 
   BasicHighlightDirective, BetterHighlightDirective,UnlessDirective, LoggerService, 
