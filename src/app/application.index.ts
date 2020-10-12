@@ -21,3 +21,6 @@ export * from "./students/student-edit/student-edit.component";
 export * from "./students/Services/student.service";
 export * from "./students/Services/students-guard.service";
 export * from "./students/Services/students.data";
+export * from "./sign-up/sign-up.component";
+export { StudentsGuardService } from './students/Services/students-guard.service';
+export { TempProductsComponent } from './temp-products/temp-products.component';

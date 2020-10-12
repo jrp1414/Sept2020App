@@ -8,11 +8,12 @@ import {
   ProductsComponent,ProductThumbnailComponent, ShortenPipe, FilterPipe, 
   BasicHighlightDirective, BetterHighlightDirective,UnlessDirective, LoggerService, 
   ProductService,DashboardComponent,HeaderComponent,FooterComponent,
-  StudentsComponent,ProductDetailsComponent,StudentDetailsComponent,StudentEditComponent
+  StudentsComponent,ProductDetailsComponent,StudentDetailsComponent,StudentEditComponent,
+  SignUpComponent,StudentsGuardService,TempProductsComponent
 } from "./application.index";
 import { Route, RouterModule, Routes } from '@angular/router';
-import { StudentsGuardService } from './students/Services/students-guard.service';
-import { TempProductsComponent } from './temp-products/temp-products.component';
+
+
 
 
 // const routes:Route[] = [];
@@ -24,6 +25,7 @@ const routes:Routes = [
    {path:":id",component:StudentDetailsComponent, canActivate:[StudentsGuardService]},
    {path:":id/edit",component:StudentEditComponent}
  ]},
+ {path:'signup',component:SignUpComponent},
  {path:"",redirectTo:"home",pathMatch:'full'}, //     /
  //{path:"**",redirectTo:"home"}
 ];
@@ -53,11 +55,13 @@ const routes:Routes = [
     ProductDetailsComponent,
     StudentDetailsComponent,
     StudentEditComponent,
-    TempProductsComponent
+    TempProductsComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule, //CommonModule
-    FormsModule,
+    FormsModule, // is for TDF
+    // ReactiveFormsModule
     RouterModule.forRoot(routes)
   ],
   providers: [

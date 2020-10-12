@@ -12,7 +12,9 @@ import { ProductService } from '../application.index';
 })
 export class TempProductsComponent implements OnInit,OnChanges {
 
-  constructor(private ps:ProductService) { }
+  constructor(private ps:ProductService) { 
+    
+  }
   ngOnChanges(changes: SimpleChanges): void {
     //Everytime there is an change to the value of the input.. 
     //This method will be automatically called..

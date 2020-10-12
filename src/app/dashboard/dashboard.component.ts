@@ -56,13 +56,11 @@ export class DashboardComponent implements OnInit,OnDestroy {
         }, 9000);
       });
 
-      obs.subscribe((resp)=>{
-        console.log(resp);
-      },(error)=>{
-        console.error(error + new Date().toTimeString());
-      },()=>{
-        console.warn("Completed");
-      });
+      obs.subscribe(
+      (resp)=>{console.log(resp);},
+      (error)=>{console.error(error + new Date().toTimeString());},
+      ()=>{console.warn("Completed");}
+      );
 
   }
 
