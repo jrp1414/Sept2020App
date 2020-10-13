@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styles: []
+  styleUrls: [
+    "./sign-up.component.css"
+  ]
 })
 export class SignUpComponent implements OnInit {
 
@@ -13,8 +15,19 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  OnSubmit(form:NgForm){
-    console.log(form.value);
+  // OnSubmit(form:NgForm){
+  //   console.log(form.value);
+  // }
+
+  @ViewChild("f") form:NgForm; 
+  @ViewChild("firstName") firstName:NgForm; 
+
+  OnSubmit(){
+    console.log(this.firstName);
   }
+
+  cities:string[] = [
+    "Pune","Mumbai","Bengaluru","Chennai"
+  ];
 
 }

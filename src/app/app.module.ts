@@ -12,6 +12,8 @@ import {
   SignUpComponent,StudentsGuardService,TempProductsComponent
 } from "./application.index";
 import { Route, RouterModule, Routes } from '@angular/router';
+import { MaxMinDirective } from './directives/max-min.directive';
+import { CompareDirective } from './directives/compare.directive';
 
 
 
@@ -56,7 +58,9 @@ const routes:Routes = [
     StudentDetailsComponent,
     StudentEditComponent,
     TempProductsComponent,
-    SignUpComponent
+    SignUpComponent,
+    MaxMinDirective,
+    CompareDirective
   ],
   imports: [
     BrowserModule, //CommonModule

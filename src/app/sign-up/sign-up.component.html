@@ -1,33 +1,124 @@
 <div class="container-fluid">
-    <form (ngSubmit)="OnSubmit(f)" #f="ngForm">
+  <!-- <form (ngSubmit)="OnSubmit(f)" #f="ngForm"> -->
+  <form (ngSubmit)="OnSubmit()" #f="ngForm">
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="firstName">First Name</label>
-          <input type="text" ngModel class="form-control" name="firstName" id="firstName" aria-describedby="helpId" placeholder="First Name">
-          <small id="helpId" class="form-text text-muted">Enter First Name</small>
+          <input type="text" #firstName="ngModel" ngModel required minlength="3" class="form-control" name="firstName" id="firstName" aria-describedby="helpId"
+            placeholder="First Name">
+          <!-- <small id="helpId" *ngIf="firstName.invalid && firstName.touched" class="form-text alert alert-danger">First Name is mandatory</small> -->
+          <small id="helpId" *ngIf="firstName.errors?.required && firstName.touched" class="form-text alert alert-danger">First Name is mandatory</small>
+          <small id="helpId" *ngIf="firstName.errors?.minlength && firstName.touched" class="form-text alert alert-danger">First Name should be of minimum 3 characters</small>
+          <!-- <ul class="list-group">
+             
+            <li class="list-group-item">touched: {{firstName.touched}}</li>
+            <li class="list-group-item">untouched: {{firstName.untouched}}</li>
+            <li class="list-group-item">dirty: {{firstName.dirty}}</li>
+            <li class="list-group-item">pristine: {{firstName.pristine}}</li>
+            <li class="list-group-item">valid: {{firstName.valid}}</li>
+            <li class="list-group-item">invalid: {{firstName.invalid}}</li>
+            <li class="list-group-item">value: {{firstName.value}}</li>
+            <li class="list-group-item">form valid: {{f.valid}}</li>
+            <li class="list-group-item">form invalid: {{f.invalid}}</li>
+          </ul> -->
         </div>
-
+      </div>
+      <div class="col-md-6">
         <div class="form-group">
           <label for="lastName">Last Name</label>
-          <input type="text" ngModel class="form-control" name="lastName" id="lastName" aria-describedby="helpId" placeholder="Last Name">
-          <small id="helpId" class="form-text text-muted">Enter Last Name</small>
+          <input type="text" ngModel #lastName="ngModel" required class="form-control" name="lastName" id="lastName" aria-describedby="helpId"
+            placeholder="Last Name">
+            <small id="helpId" *ngIf="lastName.errors?.required && lastName.touched" class="form-text alert alert-danger">Last Name is mandatory</small>
         </div>
-
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
-            <label for="emailId">Email Id</label>
-            <input type="email" ngModel class="form-control" name="emailId" id="emailId" aria-describedby="emailHelpId" placeholder="Email Id">
-            <small id="emailHelpId" class="form-text text-muted">Enter Email Id</small>
-          </div>
-
+          <label for="emailId">Email Id</label>
+          <input type="email" ngModel #emailId="ngModel" email class="form-control" name="emailId" id="emailId" aria-describedby="emailHelpId"
+            placeholder="Email Id">
+            <small id="helpId" *ngIf="emailId.errors?.email && emailId.touched" class="form-text alert alert-danger">Invalid email id</small>
+        </div>
+      </div>
+      <div class="col-md-6">
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" ngModel class="form-control" name="password" id="password" placeholder="Email Id">
+          <input type="password" ngModel required #pwd="ngModel" [compare]="comparePwd" class="form-control" name="password" id="password" placeholder="Password">          
+          <small id="helpId" *ngIf="pwd.errors?.mismatch && pwd.touched" class="form-text alert alert-danger">Both passwords mismatch</small>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
         <div class="form-group">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" ngModel class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+          <input type="password" ngModel #comparePwd="ngModel" required class="form-control" name="confirmPassword" id="confirmPassword"
+            placeholder="Confirm Password">
+            <small id="helpId" *ngIf="pwd.errors?.mismatch && pwd.touched" class="form-text alert alert-danger">Both passwords mismatch</small>
         </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Address</label>
+          <textarea class="form-control" ngModel name="address" id="address" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input class="form-check-input" ngModel type="radio" name="gender" value="male"> Male
+            <input class="form-check-input" ngModel type="radio" name="gender" value="female"> Female
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="city">City</label>
+          <select class="form-control" name="city" ngModel id="city">
+            <option *ngFor="let city of cities">{{city}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" required class="form-check-input" name="termsNconditions" ngModel value="termsNconditions">
+            Agreed To Terms and Conditions
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="skills">Skills</label>
+          <select multiple class="form-control" name="skills" ngModel id="skills">
+            <option>ASP.Net</option>
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>Angular</option>
+            <option>Javascript</option>
+            <option>C#</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number"
+            class="form-control" ngModel #age="ngModel" [MaxMin]="{max:30,min:12}" required name="age" id="age" aria-describedby="helpId" placeholder="">
+          <small id="helpId" *ngIf="(age.errors?.max || age.errors?.min) && age.touched" class="form-text alert alert-danger">Age should be between 12 and 30</small>
+        </div>
+      </div>
+    </div>
+    <button  type="submit" class="btn btn-primary">Submit</button>
+    <!-- [disabled]="f.invalid" -->
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-        
-    </form>
+  </form>
 </div>
