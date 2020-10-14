@@ -1,1 +1,103 @@
-<p>student-edit works!</p>
+<div class="container">
+    <form [formGroup]="studentEditForm" (ngSubmit)="OnSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" formControlName="firstName" aria-describedby="helpId"
+                        placeholder="First Name">
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" formControlName="lastName" aria-describedby="helpId"
+                        placeholder="Last Name">
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="emailId">Email Id</label>
+                    <input type="email" class="form-control" formControlName="emailId" id="emailId" aria-describedby="emailHelpId"
+                        placeholder="Email Id">
+                    <small id="emailHelpId" class="form-text text-muted">Help text</small>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="mobileNo">Mobile No</label>
+                    <input type="text" class="form-control" id="mobileNo" formControlName="mobileNo" aria-describedby="helpId"
+                        placeholder="Mobile No">
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+            </div>
+        </div>
+        <div formGroupName="address">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="addLine1">Add Line 1</label>
+                        <input type="text" class="form-control" id="addLine1" aria-describedby="helpId" formControlName="addLine1" 
+                            placeholder="Address Line 1">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="addLine2">Add Line 2</label>
+                        <input type="text" class="form-control" id="addLine2" aria-describedby="helpId" formControlName="addLine2"
+                            placeholder="Address Line 2">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="addLine3">Add Line 3</label>
+                        <input type="text" class="form-control" id="addLine3" aria-describedby="helpId" formControlName="addLine3"
+                            placeholder="Address Line 3">
+                        <small id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <select class="form-control" id="city" formControlName="city">
+                            <option>Pune</option>
+                            <option>Mumbai</option>
+                            <option>Chennai</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select class="form-control" id="state" formControlName="state">
+                            <option>Maharashtra</option>
+                            <option>Odisha</option>
+                            <option>West Bengal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+    </form>
+</div>

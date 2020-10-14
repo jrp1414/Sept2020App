@@ -1,6 +1,6 @@
 import  { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {AppComponent} from "./app.component";
 import {
   StringInterpolationComponent,
@@ -65,7 +65,7 @@ const routes:Routes = [
   imports: [
     BrowserModule, //CommonModule
     FormsModule, // is for TDF
-    // ReactiveFormsModule
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
