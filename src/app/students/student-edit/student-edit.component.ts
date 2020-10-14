@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-student-edit',
@@ -19,6 +19,9 @@ export class StudentEditComponent implements OnInit {
   city:FormControl= new FormControl();
   state:FormControl= new FormControl();
   address: FormGroup;
+  hobbies:FormArray = new FormArray([
+    new FormControl()
+  ]);
   
 
 
@@ -36,13 +39,18 @@ export class StudentEditComponent implements OnInit {
         addLine3: this.addLine3,
         city:this.city,
         state:this.state
-      }) 
+      }),
+      hobbies: this.hobbies 
     });
   }
 
   OnSubmit(){
     console.log(this.studentEditForm);
     console.log(this.studentEditForm.value);
+  }
+
+  AddHobby(){
+    this.hobbies.push(new FormControl());
   }
 
 }
