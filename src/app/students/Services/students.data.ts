@@ -4,6 +4,7 @@ export interface Student {
  LastName:string;
  MobileNo:string;
  EmailId:string;
+ NotificationType:string;
  Address:Address;
 };
 
@@ -16,13 +17,14 @@ export interface Address{
     State:string;
 }
 
-export const students:Student[]=[
+export var studentList:Student[]=[
     {
         StudentId:1,
         FirstName:"Ram",
         LastName:"Sharma",
         MobileNo:"898848488",
         EmailId:"ram@gmail.com",
+        NotificationType:"email",
         Address:{
             AddressId:1,
             AddLine1:"Handewadi Road",
@@ -38,6 +40,7 @@ export const students:Student[]=[
         LastName:"Pathak",
         MobileNo:"9855896899",
         EmailId:"amol@gmail.com",
+        NotificationType:"email",
         Address:{
             AddressId:2,
             AddLine1:"Magarpatta Road",
@@ -46,5 +49,22 @@ export const students:Student[]=[
             City:"Pune",
             State:"Maharashtra"
         }
+    },
+    {
+        StudentId:3,
+        FirstName:"Subhasis",
+        LastName:"Dutta",
+        MobileNo:"858589658",
+        EmailId:"subhasis@gmail.com",
+        NotificationType:"mobile",
+        Address:{
+            AddressId:3,
+            AddLine1:"Bhubaneswar",
+            AddLine2:"Bhubaneswar",
+            AddLine3:"BBSR",
+            City:"Bhubaneswar",
+            State:"Odisha"
+        }
     }
+
 ];
