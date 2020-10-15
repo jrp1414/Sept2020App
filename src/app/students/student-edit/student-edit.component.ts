@@ -15,10 +15,10 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class StudentEditComponent implements OnInit {
 
-  studentEditForm : FormGroup;
-  hobbies:FormArray;
-  addresses:FormArray;
-  constructor(private fb:FormBuilder) { }
+  studentEditForm: FormGroup;
+  hobbies: FormArray;
+  addresses: FormArray;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.hobbies = this.fb.array([
@@ -26,40 +26,43 @@ export class StudentEditComponent implements OnInit {
     ]);
     this.addresses = this.fb.array([
       this.fb.group({
-        addLine1:this.fb.control(""),
-        addLine2:this.fb.control(""),
-        addLine3:this.fb.control(null),
-        city:this.fb.control(""),
-        state:this.fb.control("")
+        addLine1: this.fb.control(""),
+        addLine2: this.fb.control(""),
+        addLine3: this.fb.control(null),
+        city: this.fb.control(""),
+        state: this.fb.control("")
       })
     ])
     this.studentEditForm = this.fb.group({
-      firstName:this.fb.control("",[Validators.required,Validators.minLength(3),Validators.maxLength(12)]),
-      lastName:this.fb.control("",Validators.required),
-      emailId:this.fb.control("",[Validators.required,Validators.email]),
-      mobileNo:this.fb.control(""),
-      notificationType:this.fb.control("email"),
-      termsAndConditions:this.fb.control(""),
-      addresses:this.addresses,
-      hobbies:this.hobbies
-    }) 
+      firstName: this.fb.control("", [Validators.required, Validators.minLength(3), Validators.maxLength(12)]),
+      lastName: this.fb.control("", Validators.required),
+      emailId: this.fb.control("", [Validators.required, Validators.email]),
+      mobileNo: this.fb.control(""),
+      notificationType: this.fb.control("email"),
+      termsAndConditions: this.fb.control(""),
+      addresses: this.addresses,
+      hobbies: this.hobbies
+    });
+    this.studentEditForm.get("notificationType").valueChanges.subscribe((value) => {
+      this.setNotification(value);
+    });
   }
 
-  OnSubmit(){
+  OnSubmit() {
     console.log(this.studentEditForm);
     console.log(this.studentEditForm.value);
   }
 
-  AddHobby(){
+  AddHobby() {
     (<FormArray>this.studentEditForm.get("hobbies")).push(this.fb.control(""));
   }
-  AddAddress(){
+  AddAddress() {
     (<FormArray>this.studentEditForm.get("addresses")).push(this.fb.group({
-      addLine1:this.fb.control(""),
-      addLine2:this.fb.control(""),
-      addLine3:this.fb.control(null),
-      city:this.fb.control(""),
-      state:this.fb.control("")
+      addLine1: this.fb.control(""),
+      addLine2: this.fb.control(""),
+      addLine3: this.fb.control(null),
+      city: this.fb.control(""),
+      state: this.fb.control("")
     }));
   }
 
