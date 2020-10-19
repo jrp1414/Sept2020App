@@ -61,6 +61,34 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                  <label for="age">Age</label>
+                  <input type="number"
+                    class="form-control" id="age" formControlName="Age" aria-describedby="helpId" placeholder="">
+                  <small id="helpId" *ngIf="studentEditForm.get('Age').errors?.required && studentEditForm.get('Age').touched" class="form-text alert alert-danger">Age Mandatory</small>
+                  <small id="helpId" *ngIf="studentEditForm.get('Age').errors?.range && studentEditForm.get('Age').dirty" class="form-text alert alert-danger">Invalid Age</small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" formControlName="TermsAndConditions">
+                    Terms And Conditions
+                  </label>
+                </div>
+            </div>   
+            <div class="col-md-4">
+                <div *ngIf="studentEditForm.get('TermsAndConditions')?.value" class="card"> 
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Terms and Conditions</h4>
+                        <p class="card-text">Show this when Terms and conditions is checked</p>
+                    </div>
+                </div>
+            </div>             
+        </div>
         <div class="card border-primary" formGroupName="Address">
                 <div class="row">
                     <div class="col-md-3">
@@ -112,7 +140,8 @@
             </div>
         <div class="row">
             <div class="col-md-6">
-                <button [disabled]="studentEditForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+                <!-- <button [disabled]="studentEditForm.invalid" type="submit" class="btn btn-primary">Submit</button> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             <div class="col-md-6">
 

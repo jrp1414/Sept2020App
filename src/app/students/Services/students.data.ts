@@ -6,6 +6,8 @@ export interface Student {
  EmailId:string;
  NotificationType:string;
  Address:Address;
+ Age?:number;
+ TermsAndConditions?:boolean;
 };
 
 export interface Address{

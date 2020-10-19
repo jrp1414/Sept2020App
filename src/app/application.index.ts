@@ -24,3 +24,4 @@ export * from "./students/Services/students.data";
 export * from "./sign-up/sign-up.component";
 export { StudentsGuardService } from './students/Services/students-guard.service';
 export { TempProductsComponent } from './temp-products/temp-products.component';
+export * from "./Shared/range.validation";

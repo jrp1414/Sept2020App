@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/application.index';
+import { RangeValidator } from 'src/app/Shared/range.validation';
 
 @Component({
   selector: 'app-student-edit',
@@ -31,6 +32,8 @@ export class StudentEditComponent implements OnInit {
       EmailId: this.fb.control("", [Validators.required, Validators.email]),
       MobileNo: this.fb.control(""),
       NotificationType: this.fb.control("email"),
+      Age:this.fb.control("",[Validators.required,RangeValidator(10,25)]),
+      TermsAndConditions:this.fb.control(false),
       Address: this.fb.group({
         AddLine1: this.fb.control(""),
         AddLine2: this.fb.control(""),
@@ -47,9 +50,14 @@ export class StudentEditComponent implements OnInit {
       let student = this.ss.GetStudentsDetails(this.studentId);
       this.studentEditForm.patchValue(student);
     });
+
+    // this.studentEditForm.get("TermsAndConditions").valueChanges.subscribe((value) => {
+    //   console.log(this.studentEditForm.get("TermsAndConditions"));
+    // });
   }
 
   OnSubmit() {
+    //console.log(this.studentEditForm);
     this.ss.UpdateStudentDetails({...this.studentEditForm.value,StudentId:this.studentId});
     this.router.navigate(["students"]);
   }
@@ -64,4 +72,12 @@ export class StudentEditComponent implements OnInit {
     mobileNoControl.updateValueAndValidity();
   }
 
+}
+
+
+function ValidateAge(control: AbstractControl): null | { [key: string]: boolean } {
+  if (control.value >= 10 && control.value <= 25) {
+      return null;
+  }
+  return { range: true };
 }
