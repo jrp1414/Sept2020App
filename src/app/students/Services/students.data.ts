@@ -4,10 +4,10 @@ export interface Student {
  LastName:string;
  MobileNo:string;
  EmailId:string;
- NotificationType:string;
+//  NotificationType:string;
  Address:Address;
- Age?:number;
- TermsAndConditions?:boolean;
+//  Age?:number;
+//  TermsAndConditions?:boolean;
 };
 
 export interface Address{

@@ -1,26 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Student, studentList } from './students.data';
 
 @Injectable({
   providedIn:"root"
 })
 export class StudentService {
-  private students:Student[]= studentList; 
-  constructor() { }
+  private baseUrl:string="https://localhost:44319/";
+  constructor(private http:HttpClient) { }
 
-  GetStudentsList():Student[]{
-    return this.students;
+  GetStudentsList():Observable<any>{
+    return this.http.get(this.baseUrl+"GetStudents");
   }
 
-  GetStudentsDetails(id:number):Student{
-    return this.students.find((std)=>std.StudentId == id);
+  GetStudentsDetails(id:number):Observable<any>{
+    return this.http.get(this.baseUrl+"GetStudent/"+id);
   }
 
-  UpdateStudentDetails(student:Student){
+  UpdateStudentDetails(student:Student):Observable<any>{
     // let stds = [...students];
-    let tempStudents = studentList.filter((std)=>std.StudentId !=student.StudentId);
-    tempStudents.push(student);
-    this.students = tempStudents;
+    // let tempStudents = studentList.filter((std)=>std.StudentId !=student.StudentId);
+    // tempStudents.push(student);
+    // this.students = tempStudents;
+    return this.http.put(this.baseUrl+"UpdateStudent",student);
   }
 }
 

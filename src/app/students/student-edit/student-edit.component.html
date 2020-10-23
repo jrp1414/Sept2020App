@@ -119,10 +119,7 @@
                         <div class="form-group">
                             <label for="city">City</label>
                             <select class="form-control" id="city" formControlName="City">
-                                <option>Pune</option>
-                                <option>Mumbai</option>
-                                <option>Chennai</option>
-                                <option>Bhubaneswar</option>
+                                <option *ngFor="let city of cities">{{city.name}}</option>                                
                             </select>
                         </div>
                     </div>

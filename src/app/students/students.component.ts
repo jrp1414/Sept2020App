@@ -8,12 +8,15 @@ import { Student } from './Services/students.data';
   styles: []
 })
 export class StudentsComponent implements OnInit {
-  students:Student[];
+  students:Student[]=[];
   constructor(private ss:StudentService) {
-    this.students = this.ss.GetStudentsList();
+    
    }
 
   ngOnInit(): void {
+    this.ss.GetStudentsList().subscribe((resp)=>{
+      this.students = resp;
+    });
   }
 
 }

@@ -47,8 +47,9 @@ export class StudentEditComponent implements OnInit {
     });
     this.route.params.subscribe((parms)=>{
       this.studentId = +parms["id"];
-      let student = this.ss.GetStudentsDetails(this.studentId);
-      this.studentEditForm.patchValue(student);
+      this.ss.GetStudentsDetails(this.studentId).subscribe((resp)=>{
+        this.studentEditForm.patchValue(resp);
+      });      
     });
 
     // this.studentEditForm.get("TermsAndConditions").valueChanges.subscribe((value) => {
@@ -58,8 +59,11 @@ export class StudentEditComponent implements OnInit {
 
   OnSubmit() {
     //console.log(this.studentEditForm);
-    this.ss.UpdateStudentDetails({...this.studentEditForm.value,StudentId:this.studentId});
-    this.router.navigate(["students"]);
+    this.ss.UpdateStudentDetails({...this.studentEditForm.value,StudentId:this.studentId}).subscribe((resp)=>{
+      console.log(resp);
+      this.router.navigate(["students"]);
+    });
+    
   }
 
   setNotification(notificationType:string){
@@ -71,6 +75,14 @@ export class StudentEditComponent implements OnInit {
     }
     mobileNoControl.updateValueAndValidity();
   }
+
+  cities:any[] = [
+    {name:"Pune",value:1},
+    {name:"Bhubaneswar",value:2},
+    {name:"Bengaluru",value:3},
+    {name:"Chennai",value:4},
+    {name:"Mumbai",value:5}
+  ];
 
 }
 
