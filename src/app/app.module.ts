@@ -15,6 +15,7 @@ import {
 import { Route, RouterModule, Routes } from '@angular/router';
 import { MaxMinDirective } from './directives/max-min.directive';
 import { CompareDirective } from './directives/compare.directive';
+import { StudentAddComponent } from './students/student-add/student-add.component';
 
 
 
@@ -25,7 +26,8 @@ const routes:Routes = [
  {path:"products",component:ProductsComponent}, //localhost:4200/products - ProductsComponent
  {path:"productDetails/:id",component:ProductDetailsComponent}, 
  {path:"students",component:StudentsComponent, children:[
-   {path:":id",component:StudentDetailsComponent, canActivate:[StudentsGuardService]},
+  {path:"new",component:StudentAddComponent}, 
+  {path:":id",component:StudentDetailsComponent, canActivate:[StudentsGuardService]},
    {path:":id/edit",component:StudentEditComponent}
  ]},
  {path:'signup',component:SignUpComponent},
@@ -61,7 +63,8 @@ const routes:Routes = [
     TempProductsComponent,
     SignUpComponent,
     MaxMinDirective,
-    CompareDirective
+    CompareDirective,
+    StudentAddComponent
   ],
   imports: [
     BrowserModule, //CommonModule

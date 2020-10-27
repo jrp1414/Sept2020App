@@ -26,7 +26,7 @@ export var studentList:Student[]=[
         LastName:"Sharma",
         MobileNo:"898848488",
         EmailId:"ram@gmail.com",
-        NotificationType:"email",
+        // NotificationType:"email",
         Address:{
             AddressId:1,
             AddLine1:"Handewadi Road",
@@ -42,7 +42,7 @@ export var studentList:Student[]=[
         LastName:"Pathak",
         MobileNo:"9855896899",
         EmailId:"amol@gmail.com",
-        NotificationType:"email",
+        // NotificationType:"email",
         Address:{
             AddressId:2,
             AddLine1:"Magarpatta Road",
@@ -58,7 +58,7 @@ export var studentList:Student[]=[
         LastName:"Dutta",
         MobileNo:"858589658",
         EmailId:"subhasis@gmail.com",
-        NotificationType:"mobile",
+        // NotificationType:"mobile",
         Address:{
             AddressId:3,
             AddLine1:"Bhubaneswar",

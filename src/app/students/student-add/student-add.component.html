@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="studentEditForm" (ngSubmit)="OnSubmit()">
+    <form [formGroup]="studentAddForm" (ngSubmit)="OnSubmit()">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -7,10 +7,10 @@
                     <input type="text" class="form-control" id="firstName" formControlName="FirstName"
                         aria-describedby="helpId" placeholder="First Name">
                     <small id="helpId"
-                        *ngIf="studentEditForm.controls.FirstName.errors?.required && studentEditForm.controls.FirstName.touched"
+                        *ngIf="studentAddForm.controls.FirstName.errors?.required && studentAddForm.controls.FirstName.touched"
                         class="form-text alert alert-danger">* Mandatory</small>
                     <small id="helpId"
-                        *ngIf="studentEditForm.get('FirstName').errors?.minlength || studentEditForm.get('FirstName').errors?.maxlength"
+                        *ngIf="studentAddForm.get('FirstName').errors?.minlength || studentAddForm.get('FirstName').errors?.maxlength"
                         class="form-text alert alert-danger">Invalid First Name</small>
 
                 </div>
@@ -21,7 +21,7 @@
                     <input type="text" class="form-control" id="lastName" formControlName="LastName"
                         aria-describedby="helpId" placeholder="Last Name">
                     <small id="helpId"
-                        *ngIf="studentEditForm.get('LastName').errors?.required && studentEditForm.get('LastName').touched"
+                        *ngIf="studentAddForm.get('LastName').errors?.required && studentAddForm.get('LastName').touched"
                         class="form-text alert alert-danger">* Mandatory</small>
                 </div>
             </div>
@@ -33,9 +33,9 @@
                     <input type="email" class="form-control" formControlName="EmailId" id="emailId"
                         aria-describedby="emailHelpId" placeholder="Email Id">
                     <small id="helpId"
-                        *ngIf="studentEditForm.get('EmailId').errors?.required && studentEditForm.get('EmailId').touched"
+                        *ngIf="studentAddForm.get('EmailId').errors?.required && studentAddForm.get('EmailId').touched"
                         class="form-text alert alert-danger">* Mandatory</small>
-                    <small id="helpId" *ngIf="studentEditForm.get('EmailId').errors?.email"
+                    <small id="helpId" *ngIf="studentAddForm.get('EmailId').errors?.email"
                         class="form-text alert alert-danger">* Invalid Email Id</small>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     <input type="text" class="form-control" id="mobileNo" formControlName="MobileNo"
                         aria-describedby="helpId" placeholder="Mobile No">
                     <small id="helpId"
-                        *ngIf="studentEditForm.get('MobileNo').errors?.required && studentEditForm.get('MobileNo').touched"
+                        *ngIf="studentAddForm.get('MobileNo').errors?.required && studentAddForm.get('MobileNo').touched"
                         class="form-text alert alert-danger">* Mandatory</small>
                 </div>
             </div>
@@ -98,7 +98,6 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <!-- <button [disabled]="studentEditForm.invalid" type="submit" class="btn btn-primary">Submit</button> -->
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
             <div class="col-md-6">

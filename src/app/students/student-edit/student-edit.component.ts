@@ -19,11 +19,11 @@ import { RangeValidator } from 'src/app/Shared/range.validation';
 export class StudentEditComponent implements OnInit {
 
   studentEditForm: FormGroup;
-  studentId:number;
+  studentId: number;
   constructor(private fb: FormBuilder,
-              private route:ActivatedRoute,
-              private ss:StudentService,
-              private router:Router) { }
+    private route: ActivatedRoute,
+    private ss: StudentService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.studentEditForm = this.fb.group({
@@ -31,9 +31,6 @@ export class StudentEditComponent implements OnInit {
       LastName: this.fb.control("", Validators.required),
       EmailId: this.fb.control("", [Validators.required, Validators.email]),
       MobileNo: this.fb.control(""),
-      NotificationType: this.fb.control("email"),
-      Age:this.fb.control("",[Validators.required,RangeValidator(10,25)]),
-      TermsAndConditions:this.fb.control(false),
       Address: this.fb.group({
         AddLine1: this.fb.control(""),
         AddLine2: this.fb.control(""),
@@ -42,14 +39,14 @@ export class StudentEditComponent implements OnInit {
         State: this.fb.control("")
       })
     });
-    this.studentEditForm.get("NotificationType").valueChanges.subscribe((value) => {
-      this.setNotification(value);
-    });
-    this.route.params.subscribe((parms)=>{
+    // this.studentEditForm.get("NotificationType").valueChanges.subscribe((value) => {
+    //   this.setNotification(value);
+    // });
+    this.route.params.subscribe((parms) => {
       this.studentId = +parms["id"];
-      this.ss.GetStudentsDetails(this.studentId).subscribe((resp)=>{
+      this.ss.GetStudentsDetails(this.studentId).subscribe((resp) => {
         this.studentEditForm.patchValue(resp);
-      });      
+      });
     });
 
     // this.studentEditForm.get("TermsAndConditions").valueChanges.subscribe((value) => {
@@ -58,30 +55,30 @@ export class StudentEditComponent implements OnInit {
   }
 
   OnSubmit() {
-    //console.log(this.studentEditForm);
-    this.ss.UpdateStudentDetails({...this.studentEditForm.value,StudentId:this.studentId}).subscribe((resp)=>{
-      console.log(resp);
+    //console.log(this.studentEditForm.value);
+    this.ss.UpdateStudentDetails({ ...this.studentEditForm.value, StudentId: this.studentId }).subscribe((resp) => {
+      this.ss.Notify.emit(true);
       this.router.navigate(["students"]);
     });
-    
+
   }
 
-  setNotification(notificationType:string){
+  setNotification(notificationType: string) {
     let mobileNoControl = this.studentEditForm.get("MobileNo");
-    if (notificationType=="mobile") {
+    if (notificationType == "mobile") {
       mobileNoControl.setValidators(Validators.required);
-    }else{
+    } else {
       mobileNoControl.clearValidators();
     }
     mobileNoControl.updateValueAndValidity();
   }
 
-  cities:any[] = [
-    {name:"Pune",value:1},
-    {name:"Bhubaneswar",value:2},
-    {name:"Bengaluru",value:3},
-    {name:"Chennai",value:4},
-    {name:"Mumbai",value:5}
+  cities: any[] = [
+    { name: "Pune", value: 1 },
+    { name: "Bhubaneswar", value: 2 },
+    { name: "Bengaluru", value: 3 },
+    { name: "Chennai", value: 4 },
+    { name: "Mumbai", value: 5 }
   ];
 
 }
@@ -89,7 +86,7 @@ export class StudentEditComponent implements OnInit {
 
 function ValidateAge(control: AbstractControl): null | { [key: string]: boolean } {
   if (control.value >= 10 && control.value <= 25) {
-      return null;
+    return null;
   }
   return { range: true };
 }

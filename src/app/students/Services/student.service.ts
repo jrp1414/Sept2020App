@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student, studentList } from './students.data';
 
@@ -19,12 +19,18 @@ export class StudentService {
   }
 
   UpdateStudentDetails(student:Student):Observable<any>{
-    // let stds = [...students];
-    // let tempStudents = studentList.filter((std)=>std.StudentId !=student.StudentId);
-    // tempStudents.push(student);
-    // this.students = tempStudents;
     return this.http.put(this.baseUrl+"UpdateStudent",student);
   }
+
+  AddStudentDetails(student:Student):Observable<any>{
+    return this.http.post(this.baseUrl+"AddStudent",student);
+  }
+
+  DeleteStudent(studentId:number):Observable<any>{
+    return this.http.delete(this.baseUrl+"DeleteStudent/"+studentId);
+  }
+
+  Notify:EventEmitter<boolean> = new EventEmitter<boolean>();
 }
 
 

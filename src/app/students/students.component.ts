@@ -14,8 +14,24 @@ export class StudentsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.RefreshStudentList();
+
+    this.ss.Notify.subscribe((resp)=>{
+      if (resp) {
+        this.RefreshStudentList();
+      }
+    });
+  }
+
+  RefreshStudentList(){
     this.ss.GetStudentsList().subscribe((resp)=>{
       this.students = resp;
+    });
+  }
+
+  DeleteStudent(studentId){
+    this.ss.DeleteStudent(studentId).subscribe(()=>{
+      this.RefreshStudentList();
     });
   }
 

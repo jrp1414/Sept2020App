@@ -2,9 +2,15 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-2">
+                <li class="list-group-item">
+                    <a routerLink="new">Add New</a>
+                </li>
                 <ul class="list-group">
                     <li class="list-group-item" *ngFor="let student of students">
                         <a [routerLink]="student.StudentId">{{student.FirstName +" "+student.LastName}}</a>
+                        <button type="button" class="btn btn-danger" (click)="DeleteStudent(student.StudentId)" >
+                            <span class="glyphicon glyphicon-remove">Delete</span>
+                        </button>
                     </li>                    
                 </ul>
             </div>
