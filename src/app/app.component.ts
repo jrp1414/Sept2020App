@@ -1,6 +1,6 @@
 import { TemplateParseResult } from '@angular/compiler';
 import { Component } from '@angular/core';
-import {ProductService } from './application.index';
+import {ProductService, StudentService } from './service.index';
 
 @Component({
   // selector: 'app-main',
@@ -26,4 +26,7 @@ import {ProductService } from './application.index';
 })
 export class AppComponent {
   
+  constructor(public ss:StudentService) {
+    
+  }  
 }

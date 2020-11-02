@@ -66,57 +66,6 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-check form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" ngModel type="radio" name="gender" value="male"> Male
-            <input class="form-check-input" ngModel type="radio" name="gender" value="female"> Female
-          </label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="city">City</label>
-          <select class="form-control" name="city" ngModel id="city">
-            <option *ngFor="let city of cities">{{city}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" required class="form-check-input" name="termsNconditions" ngModel value="termsNconditions">
-            Agreed To Terms and Conditions
-          </label>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="skills">Skills</label>
-          <select multiple class="form-control" name="skills" ngModel id="skills">
-            <option>ASP.Net</option>
-            <option>HTML</option>
-            <option>CSS</option>
-            <option>Angular</option>
-            <option>Javascript</option>
-            <option>C#</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label for="age">Age</label>
-          <input type="number"
-            class="form-control" ngModel #age="ngModel" [MaxMin]="{max:30,min:12}" required name="age" id="age" aria-describedby="helpId" placeholder="">
-          <small id="helpId" *ngIf="(age.errors?.max || age.errors?.min) && age.touched" class="form-text alert alert-danger">Age should be between 12 and 30</small>
-        </div>
-      </div>
-    </div>
     <button  type="submit" class="btn btn-primary">Submit</button>
     <!-- [disabled]="f.invalid" -->
 

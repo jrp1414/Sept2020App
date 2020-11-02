@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ProductService } from '../application.index';
+import { ProductService } from '../service.index';
 
 @Component({
   selector: 'app-tp',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StudentService } from 'src/app/application.index';
+import { StudentService } from 'src/app/service.index';
 import { RangeValidator } from 'src/app/Shared/range.validation';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { LoggerService } from '../application.index';
+import { LoggerService, StudentService } from '../service.index';
 import { ProductService } from '../Services/product.service';
 import { Description, Product } from '../Services/products.data';
 import { Person } from './product-thumbnail/product-thumbnail.component';
@@ -15,8 +15,9 @@ import { Person } from './product-thumbnail/product-thumbnail.component';
 export class ProductsComponent {
   filterText:string="";
   products:Product[]= [];
-  constructor(private logger:LoggerService,private productService:ProductService) { 
+  constructor(private logger:LoggerService,private productService:ProductService,private ss:StudentService) { 
     this.products = this.productService.GetProductsList();
+    this.ss.showSpinner = false;
   }
 
   TestServiceHierarchy(){

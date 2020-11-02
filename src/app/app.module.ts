@@ -2,32 +2,36 @@ import  { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+
 import {AppComponent} from "./app.component";
 import {
   StringInterpolationComponent,
   PropertyBindingComponent, EventBindingComponent, TwowayBindingComponent,
-  ProductsComponent,ProductThumbnailComponent, ShortenPipe, FilterPipe, 
-  BasicHighlightDirective, BetterHighlightDirective,UnlessDirective, LoggerService, 
-  ProductService,DashboardComponent,HeaderComponent,FooterComponent,
-  StudentsComponent,ProductDetailsComponent,StudentDetailsComponent,StudentEditComponent,
-  SignUpComponent,StudentsGuardService,TempProductsComponent
-} from "./application.index";
-import { Route, RouterModule, Routes } from '@angular/router';
-import { MaxMinDirective } from './directives/max-min.directive';
-import { CompareDirective } from './directives/compare.directive';
+  ProductsComponent,ProductThumbnailComponent, DashboardComponent,HeaderComponent,
+  FooterComponent, StudentsComponent,ProductDetailsComponent,StudentDetailsComponent,
+  StudentEditComponent, SignUpComponent,TempProductsComponent
+} from "./component.index";
+import {BasicHighlightDirective, BetterHighlightDirective,UnlessDirective,
+  MaxMinDirective, CompareDirective} from "./directive.index";
+import {StudentsGuardService, LoggerService} from "./service.index";
+import {ShortenPipe, FilterPipe} from "./pipe.index";    
+import { RouterModule, Routes } from '@angular/router';
 import { StudentAddComponent } from './students/student-add/student-add.component';
-
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { StudentListResolver } from './students/Services/student-list.resolver';
+import { StudentDetailsResolver } from './students/Services/student-details.resolver';
 
 // const routes:Route[] = [];
 const routes:Routes = [
  {path:"home", component:DashboardComponent}, //localhost:4200/home - DashbpardComponent's template
  {path:"products",component:ProductsComponent}, //localhost:4200/products - ProductsComponent
  {path:"productDetails/:id",component:ProductDetailsComponent}, 
- {path:"students",component:StudentsComponent, children:[
+ {path:"students",component:StudentsComponent,resolve:{studentList:StudentListResolver}, children:[
   {path:"new",component:StudentAddComponent}, 
-  {path:":id",component:StudentDetailsComponent, canActivate:[StudentsGuardService]},
+  {path:":id",component:StudentDetailsComponent,resolve:{student:StudentDetailsResolver}, canActivate:[StudentsGuardService]},
    {path:":id/edit",component:StudentEditComponent}
  ]},
  {path:'signup',component:SignUpComponent},
@@ -68,6 +72,9 @@ const routes:Routes = [
   ],
   imports: [
     BrowserModule, //CommonModule
+    MatNativeDateModule,
+    MaterialModule,
+    BrowserAnimationsModule,    
     FormsModule, // is for TDF
     ReactiveFormsModule,
     HttpClientModule,
@@ -75,7 +82,6 @@ const routes:Routes = [
   ],
   providers: [
     LoggerService
-    //ProductService
   ],
   bootstrap: [AppComponent]
 })

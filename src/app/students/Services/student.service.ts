@@ -8,6 +8,8 @@ import { Student, studentList } from './students.data';
 })
 export class StudentService {
   private baseUrl:string="https://localhost:44319/";
+  public showSpinner:boolean = true;
+
   constructor(private http:HttpClient) { }
 
   GetStudentsList():Observable<any>{

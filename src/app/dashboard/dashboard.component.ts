@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable,Observer } from 'rxjs';
+import { StudentService } from '../service.index';
 //import {Observable, Subscription}  from 'rxjs/Rx';
 
 @Component({
@@ -9,7 +10,9 @@ import { Observable,Observer } from 'rxjs';
 })
 export class DashboardComponent implements OnInit,OnDestroy {
 
-  constructor() { }
+  constructor(private ss:StudentService) {
+    this.ss.showSpinner = false;
+   }
 
   //numSubs:Subscription;
   counter:number;
