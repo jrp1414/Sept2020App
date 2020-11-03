@@ -23,6 +23,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { StudentListResolver } from './students/Services/student-list.resolver';
 import { StudentDetailsResolver } from './students/Services/student-details.resolver';
+import { StudentEditDeactivateGuard } from './students/Services/student-edit-guard.service';
 
 // const routes:Route[] = [];
 const routes:Routes = [
@@ -32,7 +33,7 @@ const routes:Routes = [
  {path:"students",component:StudentsComponent,resolve:{studentList:StudentListResolver}, children:[
   {path:"new",component:StudentAddComponent}, 
   {path:":id",component:StudentDetailsComponent,resolve:{student:StudentDetailsResolver}, canActivate:[StudentsGuardService]},
-   {path:":id/edit",component:StudentEditComponent}
+   {path:":id/edit",component:StudentEditComponent,canDeactivate:[StudentEditDeactivateGuard]}
  ]},
  {path:'signup',component:SignUpComponent},
  {path:"",redirectTo:"home",pathMatch:'full'}, //     /

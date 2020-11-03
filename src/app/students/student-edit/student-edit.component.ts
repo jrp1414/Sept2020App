@@ -73,6 +73,10 @@ export class StudentEditComponent implements OnInit {
     mobileNoControl.updateValueAndValidity();
   }
 
+  Cancel(){
+    this.router.navigate(["students"]);
+  }
+
   cities: any[] = [
     { name: "Pune", value: 1 },
     { name: "Bhubaneswar", value: 2 },
