@@ -24,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { StudentListResolver } from './students/Services/student-list.resolver';
 import { StudentDetailsResolver } from './students/Services/student-details.resolver';
 import { StudentEditDeactivateGuard } from './students/Services/student-edit-guard.service';
+import { AuthService } from './Services/auth.service';
 
 // const routes:Route[] = [];
 const routes:Routes = [

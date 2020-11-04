@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(public authService:AuthService) { }
 
   ngOnInit(): void {
   
@@ -24,7 +25,7 @@ export class SignUpComponent implements OnInit {
   @ViewChild("firstName") firstName:NgForm; 
 
   OnSubmit(){
-    console.log(this.form.value);
+    this.authService.SignUp(this.form.value);
   }
 
   cities:string[] = [
