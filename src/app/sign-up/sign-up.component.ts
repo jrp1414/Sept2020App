@@ -25,7 +25,9 @@ export class SignUpComponent implements OnInit {
   @ViewChild("firstName") firstName:NgForm; 
 
   OnSubmit(){
-    this.authService.SignUp(this.form.value);
+    this.authService.SignUp(this.form.value).subscribe((response)=>{
+      console.log(response);
+    });
   }
 
   cities:string[] = [

@@ -17,9 +17,10 @@
             </li>
             
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> | 
+        <form (ngSubmit)="OnSubmit(f)" #f="ngForm" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" #emailId="ngModel" ngModel required email class="form-control" name="EmailId" type="email" placeholder="Email Id">
+            <input class="form-control mr-sm-2" #password="ngModel" ngModel required name="Password" type="password" placeholder="Password">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button> | 
             <button class="btn btn-outline-primary my-2 my-sm-0" routerLink="signup">Sign Up</button>
         </form>
     </div>

@@ -6,9 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
     constructor(private http: HttpClient) { }
-    private baseUrl: string = "https://localhost:44319/";
+    private baseUrl: string = "http://localhost:44319/";
 
-    SignUp(user: any): Observable<any> {
-        return this.http.post(this.baseUrl + "SignUp", user);
-    } 
+    isAuthenticated:boolean=false;
+
+    SignUp(user: User): Observable<any> {
+        return this.http.post(this.baseUrl+"SignUpUser",user);
+    }
+    
+    SignIn(user: User): Observable<any> {
+        return this.http.post(this.baseUrl+"SignIn",user);
+    }
 }
