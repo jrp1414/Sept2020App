@@ -1,7 +1,7 @@
 import  { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 
 import {AppComponent} from "./app.component";
 import {
@@ -25,6 +25,7 @@ import { StudentListResolver } from './students/Services/student-list.resolver';
 import { StudentDetailsResolver } from './students/Services/student-details.resolver';
 import { StudentEditDeactivateGuard } from './students/Services/student-edit-guard.service';
 import { AuthService } from './Services/auth.service';
+import { StudentInterceptor } from './students/Services/student.interceptor';
 
 // const routes:Route[] = [];
 const routes:Routes = [
@@ -83,7 +84,8 @@ const routes:Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    LoggerService
+    LoggerService,
+    {provide:HTTP_INTERCEPTORS,useClass:StudentInterceptor,multi:true}
   ],
   bootstrap: [AppComponent]
 })

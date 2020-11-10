@@ -16,8 +16,14 @@ export class HeaderComponent implements OnInit {
 
   OnSubmit(f:NgForm){
     this.auth.SignIn(f.value).subscribe((response)=>{
-      console.log(response);
+      localStorage.setItem("token",response.data);
+      this.auth.isAuthenticated= true;
     });
+  }
+
+  SignOut(){
+    localStorage.removeItem("token");
+    this.auth.isAuthenticated = false;
   }
 
 }

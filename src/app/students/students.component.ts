@@ -20,6 +20,9 @@ export class StudentsComponent implements OnInit {
     this.route.data.subscribe((data)=>{
       this.students = data.studentList;
       this.ss.showSpinner = false;
+    },(error)=>{
+      console.log("Error Logging from Students List");
+      console.log(error);
     });
 
     this.ss.Notify.subscribe((resp)=>{
