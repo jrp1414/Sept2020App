@@ -1,5 +1,6 @@
 import { TemplateParseResult } from '@angular/compiler';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import {ProductService, StudentService } from './service.index';
 
 @Component({
@@ -24,9 +25,18 @@ import {ProductService, StudentService } from './service.index';
   ],
   providers:[ProductService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
-  constructor(public ss:StudentService) {
+  showSpinner:boolean;
+  constructor(public ss:StudentService,public store:Store<any>) {
     
   }  
+  ngOnInit(): void {
+    this.store.select("auth").subscribe((auth)=>{
+      console.log(auth);
+      if(auth){
+        this.showSpinner = auth.isAuthenticated;
+      }
+    });
+  }
 }

@@ -26,6 +26,8 @@ import { StudentDetailsResolver } from './students/Services/student-details.reso
 import { StudentEditDeactivateGuard } from './students/Services/student-edit-guard.service';
 import { AuthService } from './Services/auth.service';
 import { StudentInterceptor } from './students/Services/student.interceptor';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './state/auth.reducer';
 
 // const routes:Route[] = [];
 const routes:Routes = [
@@ -81,7 +83,8 @@ const routes:Routes = [
     FormsModule, // is for TDF
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({'auth':authReducer})
   ],
   providers: [
     LoggerService,
