@@ -28,6 +28,7 @@ import { AuthService } from './Services/auth.service';
 import { StudentInterceptor } from './students/Services/student.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './state/auth.reducer';
+import { PrimengModule } from './primeng/primeng.module';
 
 // const routes:Route[] = [];
 const routes:Routes = [
@@ -77,9 +78,10 @@ const routes:Routes = [
   ],
   imports: [
     BrowserModule, //CommonModule
+    BrowserAnimationsModule,    
     MatNativeDateModule,
     MaterialModule,
-    BrowserAnimationsModule,    
+    PrimengModule,    
     FormsModule, // is for TDF
     ReactiveFormsModule,
     HttpClientModule,

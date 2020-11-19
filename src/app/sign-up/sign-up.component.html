@@ -66,6 +66,11 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p-chips [(ngModel)]="values" name="chips" styleClass="form-control" separator=","></p-chips>
+      </div>      
+    </div> 
     <button  type="submit" class="btn btn-primary">Submit</button>
     <!-- [disabled]="f.invalid" -->
 
