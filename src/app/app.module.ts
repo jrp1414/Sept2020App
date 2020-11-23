@@ -29,6 +29,7 @@ import { StudentInterceptor } from './students/Services/student.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './state/auth.reducer';
 import { PrimengModule } from './primeng/primeng.module';
+import { StudentsModule } from './students/students.module';
 
 // const routes:Route[] = [];
 const routes:Routes = [
@@ -65,21 +66,18 @@ const routes:Routes = [
     UnlessDirective,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent,
-    StudentsComponent,
-    ProductDetailsComponent,
-    StudentDetailsComponent,
-    StudentEditComponent,
+    FooterComponent,    
+    ProductDetailsComponent,    
     TempProductsComponent,
     SignUpComponent,
     MaxMinDirective,
-    CompareDirective,
-    StudentAddComponent
+    CompareDirective    
   ],
   imports: [
     BrowserModule, //CommonModule
     BrowserAnimationsModule,    
     MatNativeDateModule,
+    StudentsModule,
     MaterialModule,
     PrimengModule,    
     FormsModule, // is for TDF
