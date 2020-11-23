@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { LoggerService, StudentService } from '../service.index';
+import { LoggerService } from '../service.index';
 import { ProductService } from '../Services/product.service';
 import { Description, Product } from '../Services/products.data';
+import { StudentService } from '../students/Services/student.service';
 import { Person } from './product-thumbnail/product-thumbnail.component';
 
 @Component({

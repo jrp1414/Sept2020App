@@ -1,20 +1,22 @@
-import  { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
-import {AppComponent} from "./app.component";
+import { AppComponent } from "./app.component";
 import {
   StringInterpolationComponent,
   PropertyBindingComponent, EventBindingComponent, TwowayBindingComponent,
-  ProductsComponent,ProductThumbnailComponent, DashboardComponent,HeaderComponent,
-  FooterComponent, StudentsComponent,ProductDetailsComponent,StudentDetailsComponent,
-  StudentEditComponent, SignUpComponent,TempProductsComponent
+  ProductsComponent, ProductThumbnailComponent, DashboardComponent, HeaderComponent,
+  FooterComponent, ProductDetailsComponent,
+   SignUpComponent, TempProductsComponent
 } from "./component.index";
-import {BasicHighlightDirective, BetterHighlightDirective,UnlessDirective,
-  MaxMinDirective, CompareDirective} from "./directive.index";
-import {StudentsGuardService, LoggerService} from "./service.index";
-import {ShortenPipe, FilterPipe} from "./pipe.index";    
+import {
+  BasicHighlightDirective, BetterHighlightDirective, UnlessDirective,
+  MaxMinDirective, CompareDirective
+} from "./directive.index";
+
+import { ShortenPipe, FilterPipe } from "./pipe.index";
 import { RouterModule, Routes } from '@angular/router';
 import { StudentAddComponent } from './students/student-add/student-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,21 +31,20 @@ import { StudentInterceptor } from './students/Services/student.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './state/auth.reducer';
 import { PrimengModule } from './primeng/primeng.module';
-import { StudentsModule } from './students/students.module';
+import { LoggerService } from './Services/logger.service';
 
 // const routes:Route[] = [];
-const routes:Routes = [
- {path:"home", component:DashboardComponent}, //localhost:4200/home - DashbpardComponent's template
- {path:"products",component:ProductsComponent}, //localhost:4200/products - ProductsComponent
- {path:"productDetails/:id",component:ProductDetailsComponent}, 
- {path:"students",component:StudentsComponent,resolve:{studentList:StudentListResolver}, children:[
-  {path:"new",component:StudentAddComponent}, 
-  {path:":id",component:StudentDetailsComponent,resolve:{student:StudentDetailsResolver}, canActivate:[StudentsGuardService]},
-   {path:":id/edit",component:StudentEditComponent,canDeactivate:[StudentEditDeactivateGuard]}
- ]},
- {path:'signup',component:SignUpComponent},
- {path:"",redirectTo:"home",pathMatch:'full'}, //     /
- //{path:"**",redirectTo:"home"}
+const routes: Routes = [
+  { path: "home", component: DashboardComponent }, //localhost:4200/home - DashbpardComponent's template
+  { path: "products", component: ProductsComponent }, //localhost:4200/products - ProductsComponent
+  { path: "productDetails/:id", component: ProductDetailsComponent },
+  {
+    path: "students",
+    loadChildren:()=> import("./students/students.module").then(m=>m.StudentsModule)
+  },
+  { path: 'signup', component: SignUpComponent },
+  { path: "", redirectTo: "home", pathMatch: 'full' }, //     /
+  //{path:"**",redirectTo:"home"}
 ];
 
 // Route Parameters - productDetails/5/Ram - id=5, name=Ram
@@ -66,29 +67,28 @@ const routes:Routes = [
     UnlessDirective,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent,    
-    ProductDetailsComponent,    
+    FooterComponent,
+    ProductDetailsComponent,
     TempProductsComponent,
     SignUpComponent,
     MaxMinDirective,
-    CompareDirective    
+    CompareDirective
   ],
   imports: [
     BrowserModule, //CommonModule
-    BrowserAnimationsModule,    
+    BrowserAnimationsModule,
     MatNativeDateModule,
-    StudentsModule,
     MaterialModule,
-    PrimengModule,    
+    PrimengModule,
     FormsModule, // is for TDF
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({'auth':authReducer})
+    StoreModule.forRoot({ 'auth': authReducer })
   ],
   providers: [
     LoggerService,
-    {provide:HTTP_INTERCEPTORS,useClass:StudentInterceptor,multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: StudentInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

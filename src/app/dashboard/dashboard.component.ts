@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { Observable, Observer } from 'rxjs';
-import { StudentService } from '../service.index';
+import { StudentService } from '../students/Services/student.service';
+
 //import {Observable, Subscription}  from 'rxjs/Rx';
 
 @Component({
@@ -15,7 +16,7 @@ import { StudentService } from '../service.index';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-  constructor(private ss: StudentService,private messageService: MessageService) {
+  constructor(private ss: StudentService) {
     this.ss.showSpinner = false;
   }
 

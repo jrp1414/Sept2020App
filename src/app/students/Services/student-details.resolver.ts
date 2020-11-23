@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
-import { StudentService } from 'src/app/service.index';
+import { StudentService } from './student.service';
+
 
 @Injectable({
   providedIn: 'root'

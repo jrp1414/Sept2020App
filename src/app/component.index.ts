@@ -8,8 +8,5 @@ export { DashboardComponent } from './dashboard/dashboard.component';
 export { HeaderComponent } from './header/header.component';
 export { FooterComponent } from './footer/footer.component';
 export * from "./products/product-details/product-details.component";
-export * from "./students/students.component";
-export * from "./students/student-details/student-details.component";
-export * from "./students/student-edit/student-edit.component";
 export * from "./sign-up/sign-up.component";
 export { TempProductsComponent } from './temp-products/temp-products.component';

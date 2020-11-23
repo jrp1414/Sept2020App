@@ -1,7 +1,8 @@
 import { TemplateParseResult } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {ProductService, StudentService } from './service.index';
+import {ProductService} from './service.index';
+import { StudentService } from './students/Services/student.service';
 
 @Component({
   // selector: 'app-main',
