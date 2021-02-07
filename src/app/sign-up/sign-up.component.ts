@@ -43,10 +43,10 @@ export class SignUpComponent implements OnInit {
   
 
   OnSubmit(){
-    console.log(this.values);
-    // this.authService.SignUp(this.form.value).subscribe((response)=>{
-    //   console.log(response);
-    // });
+    //console.log(this.values);
+    this.authService.SignUp(this.form.value).subscribe((response)=>{
+      console.log(response);
+    });
   }
 
   cities:string[] = [

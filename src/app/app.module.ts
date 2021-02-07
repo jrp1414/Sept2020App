@@ -18,15 +18,10 @@ import {
 
 import { ShortenPipe, FilterPipe } from "./pipe.index";
 import { RouterModule, Routes } from '@angular/router';
-import { StudentAddComponent } from './students/student-add/student-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { StudentListResolver } from './students/Services/student-list.resolver';
-import { StudentDetailsResolver } from './students/Services/student-details.resolver';
-import { StudentEditDeactivateGuard } from './students/Services/student-edit-guard.service';
-import { AuthService } from './Services/auth.service';
 import { StudentInterceptor } from './students/Services/student.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from './state/auth.reducer';

@@ -7,13 +7,6 @@ import {SplitButtonModule} from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ChipsModule,
-    ButtonModule,
-    DropdownModule,
-    SplitButtonModule
-  ],
   exports:[
     ChipsModule,
     ButtonModule,
